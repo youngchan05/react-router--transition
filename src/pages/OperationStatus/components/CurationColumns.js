@@ -1,0 +1,64 @@
+export const ColumnsTop = [
+  [
+    {
+      title:"지역",
+      colspan:2,
+      align:'left',
+    },
+    {
+      title:"신규",
+      colspan:4,
+      align:'left',
+    },
+    {
+      title:"누적",
+      colspan:4,
+      align:'left',
+    },
+  ],
+  [
+    {
+      title:'시/도',
+      align:'left',
+    },
+    {
+      title:'시/군/구',
+      align:'left',
+    },
+    {
+      title:'전세',
+      align:'left',
+    },
+    {
+      title:'월세',
+      align:'left',
+    },
+    {
+      title:'매매',
+      align:'left',
+    },
+    {
+      title:'분양',
+      align:'left',
+    },
+    {
+      title:'전세',
+      align:'left',
+    },
+    {
+      title:'월세',
+      align:'left',
+    },
+    {
+      title:'매매',
+      align:'left',
+    },
+    {
+      title:'분양',
+      align:'left',
+    },
+  
+  ]
+]
+
+

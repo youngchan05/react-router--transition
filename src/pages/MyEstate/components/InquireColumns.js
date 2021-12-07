@@ -1,0 +1,53 @@
+const InquireColumns = [
+  {
+    checkbox:true,
+    title:'',
+    width:'8%',
+  },
+  {
+    title:'분류',
+    width:'8%',
+    align:'left',
+    name:'type_inquire'
+  },
+  {
+    sort:'글번호',
+    width:'8%',
+    align:'left',
+    name:'pid_inquire',
+  },
+  {
+    sort:'회원번호',
+    width:'10%',
+    align:'left',
+    name:'pid_user',
+  },
+  {
+    sort:'작성자',
+    width:'10%',
+    name:'write',
+  },
+  {
+    title:'제목',
+    width:'auto',
+    align:'left',
+    name:'title'
+  },
+  {
+    title:'상태',
+    width:'8%',
+    name:'answer',
+  },
+  {
+    title:'등록날짜',
+    width:'14%',
+    name:'updated_at',
+  },
+  {
+    title:'보기',
+    width:'10%',
+    name:'detail',
+  },
+]
+
+export default InquireColumns

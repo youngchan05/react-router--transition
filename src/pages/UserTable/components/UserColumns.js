@@ -1,0 +1,56 @@
+ const UserColumns = [
+  [
+    {
+      checkbox:true,
+      title:'',
+      width:'10%',
+    },
+    {
+      sort:'회원번호',
+      width:'8%',
+      align:'left',
+      name:'pid_user',
+    },
+    {
+      sort:'이름',
+      width:'10%',
+      align:'left',
+      name:'user_name'
+    },
+    {
+      sort:'생년월일',
+      width:'10%',
+      align:'left',
+      name:'birth',
+    },
+    {
+      sort:'이메일 주소',
+      width:'auto',
+      align:'left',
+      name:'email',
+    },
+    {
+      sort:'가입날짜',
+      width:'10%',
+      align:'left',
+      name:'date_register'
+    },
+    {
+      sort:'탈퇴날짜',
+      width:'10%',
+      align:'left',
+      name:'date_widrawal',
+    },
+    {
+      title:'보기',
+      width:'10%',
+      align:'left'
+    },
+    {
+      title:'',
+      width:'30%',
+    },
+  ]
+]
+
+export default UserColumns

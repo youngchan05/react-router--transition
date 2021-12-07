@@ -1,0 +1,41 @@
+const AdminColumns = [
+  [
+    {
+      sort:'아이디',
+      width:'auto',
+      align:'left',
+    },
+    {
+      title:'이름',
+      width:'12%',
+      align:'left',
+    },
+    {
+      sort:'생년월일',
+      width:'14%',
+      align:'left',
+    },
+    {
+      title:'전화번호',
+      width:'14%',
+      align:'left',
+    },
+    {
+      title:'부서',
+      width:'10%',
+      align:'left',
+    },
+    {
+      sort:'등록날짜',
+      width:'10%',
+      align:'left',
+    },
+    {
+      title:'보기',
+      width:'10%',
+      align:'left',
+    },
+  ]
+]
+
+export default AdminColumns;

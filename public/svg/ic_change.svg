@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_change</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="ic_change" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="Group-4" transform="translate(1.000000, 1.000000)" stroke="#646464">
+            <path d="M0.798583984,3 C3.61025789,-0.285807292 6.34406323,-0.285807292 9,3" id="Path-9"></path>
+            <polyline id="Path-12" stroke-linejoin="round" transform="translate(8.464874, 2.810455) rotate(-13.000000) translate(-8.464874, -2.810455) " points="9.65386963 1.51574707 9.47735596 4.10516357 7.27587891 2.71673584"></polyline>
+        </g>
+        <g id="Group-4-Copy" transform="translate(6.000000, 8.500000) rotate(-180.000000) translate(-6.000000, -8.500000) translate(1.000000, 6.000000)" stroke="#646464">
+            <path d="M0.798583984,3 C3.61025789,-0.285807292 6.34406323,-0.285807292 9,3" id="Path-9"></path>
+            <polyline id="Path-12" stroke-linejoin="round" transform="translate(8.464874, 2.810455) rotate(-13.000000) translate(-8.464874, -2.810455) " points="9.65386963 1.51574707 9.47735596 4.10516357 7.27587891 2.71673584"></polyline>
+        </g>
+    </g>
+</svg>
