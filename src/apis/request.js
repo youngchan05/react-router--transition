@@ -4,12 +4,12 @@ import { SERVER_URL } from './Constants';
 
 import { getItem } from '../common/StorageUtils';
 
-const RestApi = [];
-apiList.forEach((item) => {
-  RestApi[item.api_name] = {};
-  RestApi[item.api_name].url = SERVER_URL + item.api;
-  RestApi[item.api_name].method = item.method;
-});
+// const RestApi = [];
+// apiList.forEach((item) => {
+//   RestApi[item.api_name] = {};
+//   RestApi[item.api_name].url = SERVER_URL + item.api;
+//   RestApi[item.api_name].method = item.method;
+// });
 
 
 const processResponse = (res) => {
@@ -80,14 +80,13 @@ export const Delete = async (url, config, data = {}) => {
 
 export const getDataByApiName = async (apiName, config = {}) => {
   let res;
-  // const RestApi = getItem('RestList');
-  console.log(RestApi ,'RestApi')
-  const userData = getItem('admin');
+  const RestApi = getItem('RestList');
+  const userData = getItem('user');
   if (userData
     && apiName !== 'adm_login_admin'
   ) {
     config.headers = {
-      id: userData.id,
+      uid: userData.uid,
       token: userData.token,
     };
   }
@@ -104,10 +103,10 @@ export const getDataByApiName = async (apiName, config = {}) => {
 
 export const getDataByUrl = async (url, config = {}, method = 'GET') => {
   let res;
-  const userData = getItem('admin');
+  const userData = getItem('user');
   if (userData) {
     config.headers = {
-      id: userData.uid,
+      uid: userData.uid,
       token: userData.token,
     };
     if (method === 'GET') res = await Get(url, config);

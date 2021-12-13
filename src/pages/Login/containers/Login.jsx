@@ -31,7 +31,8 @@ function Login (){
               <img src="./img/img_story_white.png" alt="Logo"/>
           </h1>
           <p className="desc">
-            안녕하세요. 킵스플랜 어드민 페이지 입니다.<br/>
+            안녕하세요. 
+            <br/>스마트 하우스 어드민 페이지 입니다.<br/>
             사용을 원하시면 로그인을 해주세요.
           </p>
           <Input ph="아이디 입력" name='email' value={user.email} onChange={onChange}/>

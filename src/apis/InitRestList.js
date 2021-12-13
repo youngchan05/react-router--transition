@@ -14,18 +14,17 @@ async function InitRestList() {
   try {
     const API = {};
     // alert('InitRestList');
-    const res = await axios.get(`${SERVER_URL}/${PROJECT_NAME}/restapi/api_list`).then(result => result.data.results);
-    // alert(res);
+    const res = await axios.get(`${SERVER_URL}/${PROJECT_NAME}/restapi/api_adm_list`).then(result => result.data.results);
     res.forEach((item) => {
       API[item.api_name] = {};
       API[item.api_name].url = SERVER_URL + item.api;
       API[item.api_name].method = item.method;
     });
     setItem('RestList', API);
-    console.log('InitRestList');
+    console.log(res ,'res')
     return true;
   } catch (error) {
-    console.error(error);
+    console.error(error ,'error');
     return false;
   }
 }
