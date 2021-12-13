@@ -1,0 +1,1 @@
+cordova plugin cordova-sqlite-storage
