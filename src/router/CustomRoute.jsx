@@ -1,26 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, Redirect } from 'react-router-dom';
+import { useLocation, Navigate } from 'react-router-dom';
 import { getItem } from '../common/StorageUtils';
 
-function CustomRoute({ component: Child, ...rest }) {
-  const routeRender = (props) => {
-    const { location } = props;
-    const isLogin = getItem('admin');
+function CustomRoute( {child} ) {
+    let location = useLocation();
+    const isLogin = false
+    // const isLogin = getItem('admin');
     if (!isLogin) {
       return (
-        <Redirect
-          to={{
-            pathname: '/login',
-            state: { from: location },
-          }}
-        />
+        <Navigate to="/login" state={{ from: location }} />
       );
     }
-
-    return <Child {...props} />;
-  };
-  return <Route {...rest} render={routeRender} />;
+    return child();
 }
 
 CustomRoute.propTypes = {
