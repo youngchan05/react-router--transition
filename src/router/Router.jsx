@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import CustomRoute from './CustomRoute'
-import Login from '../Page/Login/Login'
+import Login from '../Page/Login/containers/Login'
 import Board from '../Page/Board'
 
 const Router =() => {
