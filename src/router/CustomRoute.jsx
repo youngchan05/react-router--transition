@@ -5,8 +5,8 @@ import { getItem } from '../common/StorageUtils';
 
 function CustomRoute( {child} ) {
     let location = useLocation();
-    const isLogin = false
-    // const isLogin = getItem('admin');
+    // const isLogin = false
+    const isLogin = getItem('admin');
     if (!isLogin) {
       return (
         <Navigate to="/login" state={{ from: location }} />

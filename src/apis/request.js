@@ -1,7 +1,4 @@
 import axios from 'axios';
-import { apiList } from './apiList';
-import { SERVER_URL } from './Constants';
-
 import { getItem } from '../common/StorageUtils';
 
 // const RestApi = [];
@@ -61,7 +58,7 @@ export const Post = async (url, config, data = {}) => {
 
 export const Put = async (url, config, data = {}) => {
   try {
-    const res = await axios.put(url, data, config);
+    const res = await axios.put(url, config.data, config);
 
     return processResponse(res);
   } catch (error) {
