@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components"
-import { withRouter , Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const Menu = ({menuToggle,isActive}) =>  {
@@ -62,4 +62,4 @@ const Wrapper = styled.div`
   }
 
 `
-export default withRouter(Menu);
+export default Menu

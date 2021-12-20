@@ -1,21 +1,18 @@
 import React ,{useState} from 'react';
 import styled from "styled-components"
-import { withRouter } from 'react-router-dom';
 import { setItem, getItem } from '../../common/StorageUtils';
 
 import Menu from './Menu';
 
 
-function Header({history}) {
+function Header() {
   const [ myMenu , setMymenu] = useState(false);
   const menuToggle= () => {
     setMymenu(!myMenu)
   }
   const logOut = () => {
     sessionStorage.removeItem('admin');
-    history.push('/login');
   }
-  const isLogin = getItem('admin');
 
   return (
     <HeaderWrapper>
@@ -62,4 +59,4 @@ const MyPage = styled.button`
   color: #383838;
   background:url(./img/img-profile.png) no-repeat left center /26px auto;
 `
-export default withRouter(Header);
+export default Header;

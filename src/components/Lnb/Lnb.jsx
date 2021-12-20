@@ -1,67 +1,21 @@
 import React ,{useState , useEffect} from 'react';
 import styled from "styled-components"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 //lnb menuList
 import { LnbMenu } from './LnbMenu';
- function Lnb({pageDepth}){
-   useEffect(() => {
-    // setDepth(
-    //   depth.map((item ,idx) =>(
-    //     idx == pageDepth[0] ? { ...item, isActive: !item.isActive } : item
-    //   ))
-    // );
-  },[]);
-   const [ depth , setDepth ] = useState(LnbMenu);
-   const onClickDepth = (id , hasDepth) => {
-     if(hasDepth){
-       //2dpeth click EVENT
-        setDepth(
-          depth.map(item =>(
-            item.depth.map(selector => (
-              selector.id == id ? selector.isActive = !selector.isActive  : selector
-            ))
-          ))
-        );
-     }
-      setDepth(
-        //dpeth click EVENT
-        depth.map(item =>(
-          item.id == id ? { ...item, isActive: !item.isActive } : item
-        ))
-      );
-   }
-   const createDepth = (item) =>{
-     //dpeth create function
-    if(!item.depth) return;
-    return (
-      <ul>
-        {
-          item.depth.map((item , idx) => {
-            return (
-              <LnbDepth key={idx + 1} hide={item.hide} className={item.isActive ? 'active' : ''}>
-                <Link to={item.link} onClick={() => onClickDepth(item.id , item)} ><span>{item.title}</span></Link>
-                {createDepth(item)}
-              </LnbDepth>
-            )
-          })
-        }
-      </ul>
-    )
-  }
+ const Lnb = ({id}) => {
+  const [ depth , setDepth ] = useState(LnbMenu);
+  const navigate = useNavigate();
   return (
     <LnbWrapper className="lnb">
-      <LogoWrap>
-        <img src="./img/img_story_white.png" alt="LOGO"/>
-      </LogoWrap>
       <LnbItem>
         {
           depth.map((item , idx)=> {
             //dpeth base create
             return (
-              <LnbDepth key={idx + 1} hide={item.hide}  className={item.isActive ? 'active depth' : 'depth'}>
-                <Link to={item.link} onClick={() => onClickDepth(item.id)}>{item.title}</Link>
-                {createDepth(item)}
+              <LnbDepth key={idx + 1} className={item.id === id ? 'active depth' : 'depth'}>
+                  <span onClick={() => navigate(item.link)} >{item.title}</span>
               </LnbDepth>
             )
           })
@@ -70,9 +24,10 @@ import { LnbMenu } from './LnbMenu';
     </LnbWrapper>
   )
 };
+
 const LnbDepth = styled.li`
   display:${props => props.hide ? 'none':'block'};
-  a {
+   > span {
     display:inline-block;
     width:100%;
     padding:24px 17px;
@@ -142,6 +97,12 @@ const LnbDepth = styled.li`
 `
 const LnbWrapper = styled.div`
   padding-top:60px;
+  position:fixed;
+  left:0;
+  top:0;
+  width:280px;
+  height:100%;
+  background-color: #383838;
 `
 const LnbItem = styled.ul`
   height:100%;

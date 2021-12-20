@@ -2,24 +2,14 @@ import React from 'react';
 import styled from "styled-components"
 
 //lnbMenuList
-import { LnbMenu } from '../Lnb/LnbMenu';
 
-const Title = ({pageDepth , userName}) =>  {
-  const setPageTitle = () => {
-    const titleList = [];
-    pageDepth.map((item ,idx) => (
-      idx === 0 && titleList.push(<div key={idx}>{LnbMenu[pageDepth[0]].title}</div>),
-      idx === 1 && titleList.push(<div key={idx}>{LnbMenu[pageDepth[0]].depth[pageDepth[1]].title}</div>),
-      idx === 2 && titleList.push(<div key={idx}>{LnbMenu[pageDepth[0]].depth[pageDepth[1]].depth[pageDepth[2]].title}</div>)
-    ))
-    return titleList;
-  }
+const Title = ({text}) =>  {
+  console.log(text);
   return (
     <PageTitle>
       {
-        setPageTitle()
+        text
       }
-      {userName ? <span>({userName})</span> : ''}
     </PageTitle>
   )
 };
