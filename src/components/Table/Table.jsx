@@ -1,77 +1,86 @@
-import React from 'react';
+import React ,{useState, useEffect}from 'react';
 import styled from "styled-components"
 import SortButton from '../SortButton';
 import Checkbox from '../Checkbox';
-import { Link } from 'react-router-dom';
+import {formatDateYMDWithTime}  from '../../common/Utils'
+import { useNavigate } from 'react-router';
 
-
-const Table = ({columns , rows ,onClickSort ,getDetailPage,onClickCheck ,params ,tableType }) =>  {
-  return (
-   <TableWrapper className={tableType ? tableType : ''} >
-     <colgroup>
-      {
-        columns.map( (item,idx) => (<col key={idx + 1} style={{'width':item.width}}/>))
+const Table = (Columns,fetchHendler,config) =>  {
+  const [ column, setColumn] = useState(Columns);
+  const [ params, setParams] = useState(config)
+  const [skip, setSkip] = useState(true);
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if(skip) return;
+    fetchHendler(params)
+  }, [params])
+  const onClickSort = (type,name) => {
+    setSkip(false);
+    setParams({
+      params:{
+        ...params.params,
+        col_order:name,
+        sort:type
       }
-     </colgroup>
-     <thead>
-       {
-        columns.map((item , idx) => {
-          return (
-            <tr key={idx + 1}>
+    });
+  }
+  const tableTh = (item) => {
+    if(item.checkbox) return <Checkbox single type="checkbox" />
+    if(item.sort) return <SortButton onClick={onClickSort} text={item.title} name={item.name}/>
+    return item.title 
+  }
+  const tableTd = (item) => {
+    const td = column.map((cItem, idx) =>{
+      return <td align={cItem.align ?  cItem.align  :'center'} key={idx +1}>{tdType(item,cItem)}</td>
+    })
+    return td;
+  }
+  const tdType = (item, cItem) => {
+    switch(cItem.type){
+      case 'date' : return formatDateYMDWithTime(item[cItem.name]);
+      case 'checkbox' : return <Checkbox single type="checkbox" />;
+      case 'detail' : return  <span className="detail-link" onClick={ ()=>navigate(`detail/${item.cmplx_pid}`) }>상세보기</span>
+      default : return item[cItem.name]
+    }
+  }
+  const createTable = (bodyData) => {
+    return(
+      <TableWrapper>
+        <colgroup>
+          {
+            column.map( (item,idx) => (<col key={idx + 1} style={{'width':item.width}}/>))
+          }
+        </colgroup>
+        <thead>
+          <tr>
               {
-                item.map((thItem ,index) => {
-                  return (
-                    <th align={thItem.align ?  thItem.align  :'center'} key={index+ 1} style={{'width':thItem.width}}>
-                    {
-                      thItem.checkbox && <Checkbox single type="checkbox" onChange={(e)=>onClickCheck(e ,thItem.test)}/>
-                    }
-                    {
-                      thItem.sort && <SortButton isActive={params.col_order == thItem.name ? thItem.name : ''} onClickSort={onClickSort} text={thItem.sort} name={thItem.name}></SortButton>
-                    }
-                    {
-                      thItem.title
-                    }
+                column.map((item, idx) => {
+                  return <th align={item.align ?  item.align  :'center'} key={idx+ 1} >
+                    {tableTh(item)}
                   </th>
-                  )
                 })
               }
-            </tr>
-          )
-        }) 
-       }
-     </thead>
-     <tbody>
-       {
-         rows.length > 0 ?
-            rows.map((item , idx) =>{
-              return (
-                <tr key={idx + 1}>
-                {
-                  item.map((row ,idxRow) => (
-                    <td align={row.align ?  row.align  :'center'} key={idxRow + 1}>
-                    {
-                      row.checkbox && <Checkbox single type="checkbox" checked={row.isActive} onChange={(e)=>onClickCheck(e , idx)}/>
-                    }
-                    {
-                      row.detail && <Link to={getDetailPage(row.detail)} className="detail-link" type="Link">상세보기</Link>
-                    }
-                    {
-                      row.title
-                    }
-                  </td>
-                  ))
-                }
-              </tr>
-              )
-            }) 
-          :
-          <tr className="none-data">
-            <td colSpan={columns[0].length}>등록된 정보가 없습니다.</td>
           </tr>
-       }
-     </tbody>
-   </TableWrapper>
-  )
+        </thead>
+        <tbody>
+          {
+            bodyData.length === 0 ?
+            <tr>
+              <td style={{height:'500px'}} align='center' colSpan={column.length}>
+                검색결과가 없습니다. <br/><br/>검색조건을 변경하여 재검색해주세요.
+              </td>
+            </tr>
+            :
+              bodyData.map((item, idx) => {
+                return <tr key={+idx}>{tableTd(item)}</tr>
+              })
+          }
+        </tbody>
+      </TableWrapper>
+    )
+  }
+  return {createTable}
 };
 
 const TableWrapper = styled.table`
@@ -151,7 +160,7 @@ const TableWrapper = styled.table`
 
 // props의 초깃값을 정의합니다.
 Table.defaultProps = {
-  columns: [],
+  column: [],
   rows:[[]],
   getDetailPage: () => {},
   params:{

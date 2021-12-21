@@ -2,12 +2,12 @@ import React from 'react';
 import styled from "styled-components"
 
 
-const SortButton = ({text , onClickSort, name ,isActive}) =>  {
+const SortButton = ({text , onClick, name ,isActive}) =>  {
   return (
     <SortItem isActive={isActive}>
       <span>
-        <button type="button" className="up" onClick={()=> onClickSort('ASC',name)}></button>
-        <button type="button" className="down" onClick={()=> onClickSort('DESC',name)}></button>
+        <button type="button" className="up" onClick={()=> onClick('ASC',name)}></button>
+        <button type="button" className="down" onClick={()=> onClick('DESC',name)}></button>
       </span>
       {text}
     </SortItem>

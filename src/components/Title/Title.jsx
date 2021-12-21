@@ -4,7 +4,6 @@ import styled from "styled-components"
 //lnbMenuList
 
 const Title = ({text}) =>  {
-  console.log(text);
   return (
     <PageTitle>
       {

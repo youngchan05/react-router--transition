@@ -9,6 +9,9 @@ import { LnbMenu } from './LnbMenu';
   const navigate = useNavigate();
   return (
     <LnbWrapper className="lnb">
+      <h1 className="logo">
+        <img src="./img/img-logo-1.png" alt="logo" />
+      </h1>
       <LnbItem>
         {
           depth.map((item , idx)=> {
@@ -103,6 +106,20 @@ const LnbWrapper = styled.div`
   width:280px;
   height:100%;
   background-color: #383838;
+  .logo {
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:60px;
+    background-color:#fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      line-height:60px;
+    }
+  }
 `
 const LnbItem = styled.ul`
   height:100%;

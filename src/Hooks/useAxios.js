@@ -10,14 +10,15 @@ function useAxios(api,config, skip = false) {
     });
     const getApi = async() => {
         setState({...state, loding:true})
+        console.log(config,'config')
         const res = await request.getDataByApiName(api, config)
         .catch(e => {
-            console.log(res)
+            console.log(res,config)
             setState({
-                loding:false,
-                error:e,
+                    loding:false,
+                    error:e,
+                })
             })
-        })
         setState({...state, loding:false, data:res})
         return res;
     }
